@@ -1,0 +1,55 @@
+version: "3.8"
+
+services:
+  # Backend API service
+  backend:
+    build:
+      context: .
+      dockerfile: packages/backend/Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=vehicle_tracking
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres_password
+    depends_on:
+      - postgres
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    volumes:
+      - ./logs:/app/packages/backend/logs
+
+  # Frontend Next.js service in production mode
+  frontend:
+    build:
+      context: .
+      dockerfile: packages/frontend/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=http://localhost:5000/api
+    depends_on:
+      - backend
+
+  # Database service
+  postgres:
+    image: postgres:14-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres_password
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=vehicle_tracking
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./packages/backend/src/db/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql
+      - ./packages/backend/src/db/sample-data.sql:/docker-entrypoint-initdb.d/02-sample-data.sql
+
+volumes:
+  postgres_data:
