@@ -59,9 +59,13 @@ cd vehicle-tracking
 2. Build and start the production containers:
 
 ```bash
-docker-compose up -d
+docker-compose up 
 ```
-
+Or for a clean start
+```bash
+docker-compose down -v --rmi all --remove-orphans  
+docker-compose build && docker-compose up
+```
 3. Access the applications:
    - Backend API: http://localhost:5000/api
    - Backend API Docs: http://localhost:5000/api-docs
