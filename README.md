@@ -99,9 +99,6 @@ The shared code is located in the `shared` directory. It contains TypeScript int
 Tests are set up with Jest and can be run with the following commands:
 
 ```bash
-# Navigate to backend package
-cd packages/backend
-
 # Run all tests
 yarn test
 
@@ -110,10 +107,8 @@ yarn test:coverage
 ```
 
 Coverage reports are generated in the `packages/backend/coverage` directory. You can:
+View the HTML report by opening `packages/backend/coverage/lcov-report/index.html` in your browser
 
-1. View the HTML report by opening `packages/backend/coverage/lcov-report/index.html` in your browser
-2. See the coverage summary in the CI/CD pipeline on GitHub
-3. Check detailed coverage reports on [Codecov](https://codecov.io/gh/pouladzade/vehicle-tracking)
 
 ## License
 
