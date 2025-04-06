@@ -16,7 +16,7 @@
     "react-dom": "^19.0.0",
     "react-hot-toast": "^2.5.2",
     "react-leaflet": "^5.0.0",
-    "shared": "file:../../shared"
+    "shared": "file:../shared"
   },
   "devDependencies": {
     "@types/leaflet": "^1.9.17",

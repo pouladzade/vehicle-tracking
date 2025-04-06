@@ -59,13 +59,16 @@ cd vehicle-tracking
 2. Build and start the production containers:
 
 ```bash
-docker-compose up 
+docker-compose up
 ```
+
 Or for a clean start
+
 ```bash
-docker-compose down -v --rmi all --remove-orphans  
+docker-compose down -v --rmi all --remove-orphans
 docker-compose build && docker-compose up
 ```
+
 3. Access the applications:
    - Backend API: http://localhost:5000/api
    - Backend API Docs: http://localhost:5000/api-docs
@@ -88,11 +91,11 @@ You can use either the email address or customer ID to log in to the system.
 
 ### Working on the Backend
 
-The backend code is located in the `packages/backend` directory. It's a standard Express.js application with TypeScript.
+The backend code is located in the `backend` directory. It's a standard Express.js application with TypeScript.
 
 ### Working on the Frontend
 
-The frontend code is located in the `packages/frontend` directory. It's a Next.js application with TypeScript and Tailwind CSS.
+The frontend code is located in the `frontend` directory. It's a Next.js application with TypeScript and Tailwind CSS.
 
 ### Working on Shared Code
 
@@ -103,7 +106,7 @@ The shared code is located in the `shared` directory. It contains TypeScript int
 Tests are set up with Jest and can be run with the following commands:
 
 ```bash
-cd packages/backend
+cd backend
 # Run all tests
 yarn test
 
@@ -111,9 +114,8 @@ yarn test
 yarn test:coverage
 ```
 
-Coverage reports are generated in the `packages/backend/coverage` directory. You can:
-View the HTML report by opening `packages/backend/coverage/lcov-report/index.html` in your browser
-
+Coverage reports are generated in the `backend/coverage` directory. You can:
+View the HTML report by opening `backend/coverage/lcov-report/index.html` in your browser
 
 ## License
 
