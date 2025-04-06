@@ -2,26 +2,36 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Copy package files
-COPY package.json yarn.lock ./
+# Copy all package.json files for workspace setup
+COPY package.json ./
+COPY backend/package.json ./backend/
+COPY shared/package.json ./shared/
 
-# Install dependencies with caching
-RUN yarn install --frozen-lockfile --production=false
+# Install all dependencies
+RUN yarn install
 
 # Copy source code
-COPY . ./
+COPY backend/ ./backend/
+COPY shared/ ./shared/
 
-# Create migrations directory
+# Build shared module first
+WORKDIR /app/shared
+RUN yarn build
+
+# Build the backend
+WORKDIR /app/backend
+
+# Create migrations directory and copy migrations
 RUN mkdir -p dist/db/migrations
-COPY src/db/migrations/ dist/db/migrations/
+# The migrations are already copied with the entire backend directory
 
 # Build the project
 RUN yarn build
 
-# Remove development dependencies
-RUN yarn install --frozen-lockfile --production=true
+# Clean up dev dependencies for production
+RUN yarn install --production=true
 
 EXPOSE 5000
 
-# Run in production mode
-CMD ["node", "dist/server.js"] 
+# Run the backend app
+CMD ["node", "dist/server.js"]
