@@ -1,0 +1,47 @@
+{
+  "name": "vehicle-tracking",
+  "version": "1.0.0",
+  "description": "Vehicle tracking system with TypeScript and PostgreSQL",
+  "main": "dist/server.js",
+  "scripts": {
+    "start": "node dist/server.js",
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "npm run lint:shared && npm run lint:backend && npm run lint:frontend",
+    "lint:fix": "npm run lint:shared:fix && npm run lint:backend:fix && npm run lint:frontend:fix",
+    "lint:shared": "cd shared && npm run lint",
+    "lint:shared:fix": "cd shared && npm run lint:fix",
+    "lint:backend": "cd packages/backend && npm run lint",
+    "lint:backend:fix": "cd packages/backend && npm run lint:fix",
+    "lint:frontend": "cd packages/frontend && npm run lint",
+    "lint:frontend:fix": "cd packages/frontend && npm run lint:fix",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.8",
+    "dotenv": "^16.4.7",
+    "husky": "^8.0.3",
+    "jest": "^29.7.0",
+    "lint-staged": "^15.1.0",
+    "ts-jest": "^29.3.1",
+    "typescript": "^5.3.3"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/src/tests/**/*.test.ts"
+    ],
+    "setupFiles": [
+      "dotenv/config"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": "npm run lint:fix"
+  }
+}
