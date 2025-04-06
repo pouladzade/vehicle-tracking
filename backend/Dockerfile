@@ -2,23 +2,18 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Install dependencies only when needed
-COPY backend/package.json ./backend/
-COPY shared/package.json ./shared/
+# Copy package files
+COPY package.json yarn.lock ./
 
-# Install dependencies with caching - using production flag for smaller image
+# Install dependencies with caching
 RUN yarn install --frozen-lockfile --production=false
 
 # Copy source code
-COPY backend ./backend
-COPY shared ./shared
-
-# Set the working directory to the backend project
-WORKDIR /app/backend
+COPY . ./
 
 # Create migrations directory
 RUN mkdir -p dist/db/migrations
-COPY backend/src/db/migrations/ dist/db/migrations/
+COPY src/db/migrations/ dist/db/migrations/
 
 # Build the project
 RUN yarn build

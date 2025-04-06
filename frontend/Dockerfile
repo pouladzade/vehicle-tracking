@@ -2,19 +2,14 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Install dependencies only when needed
-COPY frontend/package.json ./frontend/
-COPY shared/package.json ./shared/
+# Copy package files
+COPY package.json yarn.lock ./
 
-# Install dependencies with caching - using production flag for smaller image
+# Install dependencies with caching
 RUN yarn install --frozen-lockfile --production=false
 
 # Copy source code
-COPY frontend ./frontend
-COPY shared ./shared
-
-# Set the working directory to the frontend project
-WORKDIR /app/frontend
+COPY . ./
 
 # Build the Next.js application
 RUN yarn build

@@ -394,3 +394,10 @@
 {"level":"info","message":"Found 2 customers in database.","service":"vehicle-tracking","timestamp":"2025-04-06T16:30:59.263Z"}
 {"level":"info","message":"Found 9 vehicles and 9 drivers in database.","service":"vehicle-tracking","timestamp":"2025-04-06T16:30:59.265Z"}
 {"level":"info","message":"Server is running on port 5000","service":"vehicle-tracking","timestamp":"2025-04-06T16:30:59.267Z"}
+{"level":"info","message":"Database connection established successfully","service":"vehicle-tracking","timestamp":"2025-04-06T16:36:45.552Z"}
+{"level":"info","message":"Database connected successfully","service":"vehicle-tracking","timestamp":"2025-04-06T16:36:45.553Z"}
+{"level":"info","message":"Found 2 customers in database.","service":"vehicle-tracking","timestamp":"2025-04-06T16:36:45.557Z"}
+{"level":"info","message":"Found 9 vehicles and 9 drivers in database.","service":"vehicle-tracking","timestamp":"2025-04-06T16:36:45.561Z"}
+{"level":"info","message":"Server is running on port 5000","service":"vehicle-tracking","timestamp":"2025-04-06T16:36:45.563Z"}
+{"level":"info","message":"Deleted all position records for vehicle 5","service":"vehicle-tracking","timestamp":"2025-04-06T16:37:33.448Z"}
+{"level":"info","message":"Deleted all position records for vehicle 4","service":"vehicle-tracking","timestamp":"2025-04-06T16:37:37.674Z"}

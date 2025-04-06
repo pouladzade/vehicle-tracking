@@ -4,8 +4,8 @@ services:
   # Backend API service
   backend:
     build:
-      context: .
-      dockerfile: backend/Dockerfile
+      context: ./backend
+      dockerfile: Dockerfile
     ports:
       - "5000:5000"
     environment:
@@ -22,13 +22,13 @@ services:
       - 8.8.8.8
       - 1.1.1.1
     volumes:
-      - ./logs:/app/backend/logs
+      - ./logs:/app/logs
 
   # Frontend Next.js service in production mode
   frontend:
     build:
-      context: .
-      dockerfile: frontend/Dockerfile
+      context: ./frontend
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
     environment:
