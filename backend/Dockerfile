@@ -3,20 +3,11 @@ FROM node:20-alpine
 WORKDIR /app
 
 # Copy all package.json files for workspace setup
-COPY package.json ./
-COPY backend/package.json ./backend/
-COPY shared/package.json ./shared/
 
-# Install all dependencies
-RUN yarn install
+COPY backend/package.json ./backend/
 
 # Copy source code
 COPY backend/ ./backend/
-COPY shared/ ./shared/
-
-# Build shared module first
-WORKDIR /app/shared
-RUN yarn build
 
 # Build the backend
 WORKDIR /app/backend
@@ -25,6 +16,7 @@ WORKDIR /app/backend
 RUN mkdir -p dist/db/migrations
 # The migrations are already copied with the entire backend directory
 
+RUN yarn install --frozen-lockfile --production=false
 # Build the project
 RUN yarn build
 
