@@ -59,7 +59,7 @@ cd vehicle-tracking
 2. Build and start the production containers:
 
 ```bash
-docker-compose up
+docker-compose up --build
 ```
 
 Or for a clean start
