@@ -103,6 +103,7 @@ The shared code is located in the `shared` directory. It contains TypeScript int
 Tests are set up with Jest and can be run with the following commands:
 
 ```bash
+cd packages/backend
 # Run all tests
 yarn test
 
